@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tokyo City Flyover</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        mapboxgl.accessToken = "pk.eyJ1IjoibnlhbWF0byIsImEiOiJja2Y4dzNkOW8wY3MwMnFvM29iNnJzNzVzIn0.GHlHwu3r5YjKBU3qAKvccQ";
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: "mapbox://styles/nyamato/cl71sppai002314qsnu3kya1g", // style URL
+            zoom: 12, // starting zoom
+            minZoom: 12,
+            maxZoom: 14,
+            center: [139.7668243926017, 35.68111419325673], // starting position
+            pitch: 50 // pitch in degree
+        });
+
+        map.on('load', () => {
+
+
+            // Load an image.
+            map.loadImage(
+                './src/img/marker-blue.png',
+                (error, image) => {
+                    if (error) throw error;
+
+                    // Add the image to the map style.
+                    map.addImage('myicon', image);
+
+                    // Add a data source containing several points' features.
+                    map.addSource('mypoints', {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'FeatureCollection',
+                            'features': [
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "アークヒルズ",
+                                        'description':
+                                            '<strong>アークヒルズ / Ark Hills</strong><p><iframe width="200" src="https://www.youtube.com/embed/BQi0GwGKlWA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.74014280002294, 35.66774830654387]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "愛宕グリーンヒルズ",
+                                        'description':
+                                            '<strong>愛宕グリーンヒルズ / Atago Green Hills</strong><p><iframe width="200" src="https://www.youtube.com/embed/023ght6Ha1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.74889361285528, 35.66217882624675]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "六本木ヒルズ",
+                                        'description':
+                                            '<strong>六本木ヒルズ / Roppongi Hills</strong><p><iframe width="200" src="https://www.youtube.com/embed/nWhXJ4_aLZw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.72920037302373, 35.660825449251085]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "虎ノ門ヒルズ",
+                                        'description':
+                                            '<strong>虎ノ門ヒルズ / Torahomon Hills</strong><p><iframe width="200" src="https://www.youtube.com/embed/h370Oe-y7Cc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.74916891147208, 35.66711525716055]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "麻布台ヒルズ",
+                                        'description':
+                                            '<strong>麻布台ヒルズ / Azabudai Hills</strong><p><iframe width="200" src="https://www.youtube.com/embed/KJRHPwvGI4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.74045175387116, 35.66070779518292]
+                                    }
+                                },
+                                {
+                                    'type': 'Feature',
+                                    'properties': {
+                                        "name": "渋谷",
+                                        'description':
+                                            '<strong>渋谷 / Shibuya</strong><p><iframe width="200" src="https://www.youtube.com/embed/G6VKE_0WVk8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>',
+                                    },
+                                    'geometry': {
+                                        'type': 'Point',
+                                        'coordinates': [139.7016250775179, 35.658277944999874]
+                                    }
+                                },
+                            ]
+                        }
+                    });
+
+                    // Add a layer to use the image to represent the data.
+                    map.addLayer({
+                        'id': 'points',
+                        'type': 'symbol',
+                        'source': 'mypoints', // reference the data source
+                        'layout': {
+                            'icon-image': 'myicon', // reference the image
+                            'icon-size': 1.5
+                        }
+                    });
+
+                    // On click, get coordinates and a description.
+                    map.on('click', 'points', (e) => {
+                        const coordinates = e.features[0].geometry.coordinates.slice();
+                        const description = e.features[0].properties.description;
+
+                        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                        }
+
+                        // Create a popup object
+                        new mapboxgl.Popup()
+                            .setLngLat(coordinates)
+                            .setHTML(description)
+                            .addTo(map);
+
+                    });
+
+                    // On mouseenter.
+                    map.on('mouseenter', 'points', () => {
+                        map.getCanvas().style.cursor = 'pointer';
+                    });
+
+                    // On mouse leave.
+                    map.on('mouseleave', 'points', () => {
+                        map.getCanvas().style.cursor = '';
+                    });
+
+
+                }
+            );
+
+        });
+    </script>
+
+</body>
+
+</html>

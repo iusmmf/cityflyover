@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+/* ========== リセットcss ==========*/
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ========== index.html ==========*/
+
+#main {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  /* 上下左右中央揃えのため */
+  justify-content: center;
+  /* 左右中央揃え */
+}
+
+/* ヘッダー */
+.header {
+  margin: 20px;
+  padding-left: 40px;
+  font-family: 'Dosis', sans-serif;
+}
+
+#btn {
+  margin: auto;
+  margin-top: 400px;
+  width: 400px;
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  /* divの上下左右中央揃えのため */
+  justify-content: center;
+  /* 左右中央揃え */
+  align-items: center;
+  /* 上下中央揃え */
+}
+
+footer {
+  text-align: center;
+  color: white;
+}
+
+#enter {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+  cursor: pointer;
+}
+
+#enter::before,
+#enter::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 5px;
+  background-color: #8ffcff;
+  transition: .3s;
+}
+
+#enter::before {
+  top: -10px;
+  left: 0;
+}
+
+#enter::after {
+  bottom: -10px;
+  right: 0;
+}
+
+#enter:hover::before,
+#enter:hover::after {
+  width: 100%;
+}
+
+/* index.htmlの背景画像 */
+.background-img {
+  height: calc(100vh - 110px);
+  width: 100%;
+  background-image: url(../src/img/bg_tokyo\ future\ model.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* ========== index.html（レスポンシブデザイン） ==========*/
+@media screen and (max-width: 800px) {
+
+  /* ヘッダー */
+  .header {
+    padding-left: 0px;
+    font-family: 'Dosis', sans-serif;
+  }
+
+}
+
+
+/* ========== cityflyover.html ==========*/
