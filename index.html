@@ -24,7 +24,7 @@
         <div class="background-img">
             <div id="btn">
                 <div>
-                    <h1 id="enter" onclick="gate();">E N T E R</h1>
+                    <h1 id="enter" onclick="enterSite();">E N T E R</h1>
                 </div>
             </div>
         </div>
@@ -36,19 +36,20 @@
 
     <!-- Password prompt -->
     <script type="text/javascript">
-        function gate() {
-            // Ask a user to input PW.
-            var UserInput = prompt("閲覧IDを入力して下さい:", "");
+        function enterSite() {
+            // Ask user to input password.
+            const password = prompt("閲覧IDを入力して下さい:", "");
 
-            // Check the input PW
-            if (/\W+/g.test(UserInput)) {
-                // Return an message if error.
+            // Check the input password.
+            if (/\W+/g.test(password)) {
+                // Return an error message.
                 alert("半角英数字のみを入力して下さい。");
-            } else if (UserInput != null) {
-                // Move to the new url
-                location.href = UserInput + ".html";
-            };
-        };
+            } else if (password !== null) {
+                // Move to the new URL.
+                const url = `${password}.html`;
+                location.href = url;
+            }
+        }
     </script>
 
 </body>
